@@ -21,3 +21,23 @@ test("player object has inventory", () => {
 	// expect player.inventory to equal the truthiness/falsiness of the callback
 	// the callback checks if there's an array containing at least one object
 });
+
+test("gets player stats as object", () => {
+    const player = new Player('Dave');
+
+    expect(player.getStats()).toHaveProperty('potions');
+    expect(player.getStats()).toHaveProperty('health');
+    expect(player.getStats()).toHaveProperty('strength');
+    expect(player.getStats()).toHaveProperty('agility');
+});
+
+test("returns inventory or false", () => {
+    const player = newPlayer('Dave');
+
+    expect(player.getInventory()).toEqual(expect.any(Array));
+
+    player.inventory = [];
+    // the reference to an object called 'player' is constant, not anything in it
+
+    expect(player.getInventory()).toEqual(false);
+})
